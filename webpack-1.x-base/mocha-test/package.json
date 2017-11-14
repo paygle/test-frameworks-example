@@ -1,0 +1,29 @@
+{
+  "name": "mocha-test",
+  "version": "1.0.0",
+  "description": "Mocha Test Example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "liuxp",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.5.3"
+  },
+  "devDependencies": {
+    "express": "^4.16.2",
+    "html-webpack-plugin": "^2.30.1",
+    "vue-hot-reload-api": "^2.2.3",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^13.5.0",
+    "vue-style-loader": "^3.0.3",
+    "vue-template-compiler": "^2.5.3",
+    "vue-template-es2015-compiler": "^1.6.0",
+    "webpack": "^1.15.0",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-dev-server": "^2.9.4",
+    "webpack-hot-middleware": "^2.20.0",
+    "webpack-merge": "^4.1.1"
+  }
+}
