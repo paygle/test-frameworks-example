@@ -28,6 +28,7 @@ module.exports = {
       'config': path.resolve(__dirname, '../config'),
       'assets': path.resolve(__dirname, '../src/assets'),
       'packages': path.resolve(__dirname, '../packages'),
+      'test': path.resolve(__dirname, '../test'),
 	    'src': path.resolve(__dirname, '../src'),
       'pages': path.resolve(__dirname, '../src/pages'),
       'utils': path.resolve(__dirname, '../src/utils')
