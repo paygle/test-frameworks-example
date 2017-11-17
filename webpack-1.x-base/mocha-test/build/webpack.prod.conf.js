@@ -10,11 +10,11 @@ var env = process.env.NODE_ENV === 'testing' ? require('../config/test.env') : c
 
 // 循环列表
 utils.entry.forEach(function(item){
-  baseWebpackConfig.entry[item] = 'src/modules/' + item + '/main.js';
+  baseWebpackConfig.entry[item] = 'src/pages/' + item + '/main.js';
   if(!baseWebpackConfig.plugins){ baseWebpackConfig.plugins = []; }
   baseWebpackConfig.plugins.push(new HtmlWebpackPlugin({
       filename: item + '.html',
-      template: 'src/modules/'+ item + '/main.html',
+      template: 'src/pages/'+ item + '/main.html',
       chunks:['vendor', item],   //介入JS
       inject: true,
       minify: {
