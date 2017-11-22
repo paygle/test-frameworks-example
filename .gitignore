@@ -1,3 +1,4 @@
 node_modules
 dist
 .idea
+/webpack-1.x-base/jasmine-test/.vscode
