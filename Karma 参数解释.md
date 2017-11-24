@@ -49,8 +49,7 @@
 |proxies	|Type: Object。默认为：{}。代理路径的映射配对。代理可以迅速地被指定目标url或路径，或者使用一个对象去配置更多的选项。可能的选项包括：<p>· target 目标url或者路径（必填）</p><p>· changeOrigin 无论如何，代理都应该使用目标（默认为false）的主机来覆盖 主机数据头（Host header）。</p><p>例子：</p><p>proxies:{</p><p>'/static': 'http://gstatic.com',</p><p>'/web': 'http://localhost:9000',</p><p>'/img/': '/base/test/images/',</p><p>'/proxyfied':{ </p><p>'target': 'http://myserver.localhost',</p><p>'changeOrigin': true</p><p>}</p>|
 |proxyValidateSSL	|Type: Boolean。默认为true。当发现无效的SSL证书时，无论Karma还是任何浏览器都应该报错。|
 |reportSlowerThan	|Type: Number。默认为 0。 Karma将报告比给定时间限制（毫秒）慢的所有测试。这是默认禁用的（因为默认值是0）。|
-|reporters	|Type: Array。默认为 ['progress']。<p>可能的值：dots 或 progress。</p><p>使用的报告者（reporter）列表。</p><p>额外的报告者，例如growl, junit, teamcity 或者 coverage 可以通过插件被加载。
-注意：几乎所有的karma报告者都需要（通过NPM）额外的库去安装。</p>|
+|reporters	|Type: Array。默认为 ['progress']。<p>可能的值：dots 或 progress。</p><p>使用的报告者（reporter）列表。</p><p>额外的报告者，例如growl, junit, teamcity 或者 coverage 可以通过插件被加载。</p><p>注意：几乎所有的karma报告者都需要（通过NPM）额外的库去安装。</p>|
 |formatError	|Type: Function。默认为undefined。<p>参数： msg - 一个单行的断言错误和堆栈跟踪（为每一行调用）。返回值：一个新的错误信息行。</p><p>说明：规定断言错误和堆栈跟踪的格式。用于删除供应商和编译源。返回一个空行''来删除它。</p>|
 |restartOnFileChange	|Type: Boolean。默认为false。当karma监视文件变动，它将延迟新的运行，直到当前运行结束。禁用这个设置将会取消当前运行，并在检测到变动时立即启动一个新的运行。|
 |retryLimit	|Type: Number。默认为2。当浏览器崩溃，karma将会尝试重启。该属性定义了karma在放弃之前，重启浏览器的次数。|
