@@ -1,5 +1,7 @@
 ### Karma中文配置API
 
+* Webpack 处理功能： require.context(directory, useSubdirectories = false, regExp = /^\.\//);
+
 #### Karma Configuration Options
 
 
@@ -12,7 +14,7 @@
 |browserConsoleLogOptions|	Type: Objecr。默认为{level: "debug", format: "%b %T: %m", terminal: true}。使用以下属性配置浏览器控制台的记录方式，所有这些属性都是可选的：<p><code>{level: string, format: string, path: string, terminal: boolean}</code></p><p>这里的level是所需的日志级别（log-level），其中log级别总会被记录。format的取值是%b, %t, %T, 和 %m的其中一个字符串，该字符串会替换成浏览器字符串，分别记录小写、大写日志类型和日志信息。 format 的取值仅仅会影响输出文件。path是输出文件的输出路径，terminal指示日志是否应该被输出在终端。</p>|
 |browserDisconnectTolerance	|Type: Number。默认为0。允许的断开连接数。该值代表着浏览器在断开连接时尝试的最大尝试次数。通常情况下，任何断开连接都被认为是失败，但是当karma服务器和浏览器之间有片状的网络连接时，这个选项允许你定义一个容错级别。|
 |browserNoActivityTimeout	|Type: Number。默认为10000。karma在断开浏览器连接之前，等待的浏览器消息的时间（毫秒）。如果在测试执行期间，karma在规定时间（该值）内没有收到来自浏览器的任何消息，则它将从浏览器断开连接。|
-|browsers	|Type: Array。默认为[]。可能的值：<p>Chrome (需要 karma-chrome-launcher 插件)</p><p> ChromeCanary (需要karma-chrome-launcher 插件)</p><p> PhantomJS (需要 karma-phantomjs-launcher 插件)</p><p> Firefox (需要 karma-firefox-launcher 插件)</p><p>Opera (需要 karma-opera-launcher 插件), IE (需要 karma-ie-launcher 插件)</p><p>Safari (需要 karma-safari-launcher 插件)</p><p>说明：该值是要启动和捕获的浏览器列表。当Karma启动时，它也会启动放置在这个设置中的每个浏览器。一旦Karma关闭，它也会关闭这些浏览器。您可以通过打开浏览器并访问Karma Web服务器正在侦听的URL来手动捕获任何浏览器（默认情况下为http://localhost:9876/）。|</p>
+|browsers	|Type: Array。默认为[]。可能的值：<p>Chrome (需要 karma-chrome-launcher 插件)</p><p> ChromeCanary (需要karma-chrome-launcher 插件)</p><p> PhantomJS (需要 karma-phantomjs-launcher 插件)</p><p> Firefox (需要 karma-firefox-launcher 插件)</p><p>Opera (需要 karma-opera-launcher 插件) </p><p>IE (需要 karma-ie-launcher 插件)</p><p>Safari (需要 karma-safari-launcher 插件)</p><p>说明：该值是要启动和捕获的浏览器列表。当Karma启动时，它也会启动放置在这个设置中的每个浏览器。一旦Karma关闭，它也会关闭这些浏览器。您可以通过打开浏览器并访问Karma Web服务器正在侦听的URL来手动捕获任何浏览器（默认情况下为http://localhost:9876/）。|</p>
 |captureTimeout	|Type: Number。默认为"60000"。捕获浏览器的超时时长（ms）。该值代表着浏览器启动并连接到karma的最大启动时长。如果浏览器不能在规定时长内被捕获到，karma将会结束该任务，并尝试重新启动它，如此三次之后，karma将会放弃捕获。|
 |client.args	|Type: Array。默认为undefined。当karma run 在命令行中传递附加参数时，它们将作为karma.config.args(字符串数组)传递给测试适配器。clinet.args选项允许你设置除了run之外的操作值。|
 |client.useIframe	|Type: Boolean。默认为"true"。在内嵌框架（iframe）或者新窗口运行测试。如果该值为true，karma会在内嵌框架中运行测试。如果为false，karma会在新窗口运行测试。有些测试可能无法在内嵌框架运行，而是需要在新窗口中运行。|
