@@ -28,13 +28,33 @@ var webpackConfig = merge(baseWebpackConfig, {
 
 // shared config for all unit tests
 module.exports = {
+
+  // enable / disable watching file and executing tests whenever any file changes
+  autoWatch: true,
+
+  // base path, that will be used to resolve files and exclude
+  basePath: '..',
+
+  // web server port
+  port: 6677,
+
   frameworks: ['mocha', 'sinon-chai'],
+
+  // list of files / patterns to load in the browser
   files: [
-    './index.js'
+    'src/**/*.js',
+    'test/**/*.js'
   ],
+
   preprocessors: {
-    './index.js': ['webpack', 'sourcemap']
+    'src/**/*.js': ['webpack', 'sourcemap'],
+    'test/**/*.js': ['webpack', 'sourcemap']
   },
+
+  // list of files / patterns to exclude
+  exclude: [
+  ],
+
   webpack: webpackConfig,
   webpackMiddleware: {
     noInfo: true

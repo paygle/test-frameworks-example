@@ -24,6 +24,7 @@
 export default {
   name: 'HelloWorld',
   data () {
+    debugger;
     return {
       msg: 'Welcome to Your Vue.js App Test'
     }
