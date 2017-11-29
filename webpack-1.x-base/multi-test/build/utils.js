@@ -2,7 +2,7 @@ var path = require('path')
 var config = require('../config')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 // 添加入口列表
-exports.entry = process.env.NODE_ENV === '"testing"' ? require('./entries-test') : require('./entries');
+exports.entry = require('./entries.json');
 
 exports.assetsPath = function (_path) {
   var assetsSubDirectory = process.env.NODE_ENV === 'production'

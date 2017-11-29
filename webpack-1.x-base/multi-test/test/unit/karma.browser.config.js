@@ -12,8 +12,15 @@ module.exports = function (config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      'Chrome'
+      'ChromeDebugging'
     ],
+    // 配置 Chrome 调试参数
+    customLaunchers: {
+      ChromeDebugging: {
+        base: 'Chrome',
+        flags: [ '--remote-debugging-port=9333' ]
+      }
+    },
 
     reporters: ['mocha'],
 
@@ -23,7 +30,7 @@ module.exports = function (config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: true,
+    singleRun: false,
     
     colors: true,
 

@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Hello from 'packages/Hello-world'
+
+Vue.config.devtools = true;
+
 debugger
 describe('Hello.vue', () => {
   debugger

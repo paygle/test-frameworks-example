@@ -7,6 +7,7 @@
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "test": "npm run test:cover && npm run test:e2e -- --env phantomjs",
+    "test:browser": "karma start test/unit/karma.browser.config.js",
     "test:unit": "karma start test/unit/karma.unit.config.js",
     "test:cover": "karma start test/unit/karma.cover.config.js",
     "test:e2e": "npm run build -- web-full-prod,web-server-basic-renderer && node test/e2e/runner.js"
@@ -46,13 +47,14 @@
     "expose-loader": "^0.7.3",
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^1.1.5",
+    "file-loader": "^0.11.2",
     "function-bind": "^1.1.1",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
     "http-proxy-middleware": "^0.17.4",
     "inject-loader": "^2.0.1",
     "isparta-loader": "^2.0.0",
+    "istanbul-instrumenter-loader": "^1.2.0",
     "json-loader": "^0.5.7",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
@@ -86,9 +88,10 @@
     "vue-template-es2015-compiler": "^1.6.0",
     "webpack": "^1.15.0",
     "webpack-dev-middleware": "^1.12.0",
-    "webpack-dev-server": "^2.9.4",
+    "webpack-dev-server": "^1.16.5",
     "webpack-hot-middleware": "^2.20.0",
-    "webpack-merge": "^4.1.1"
+    "webpack-merge": "^4.1.1",
+    "write-file-webpack-plugin": "^1.0.0"
   },
   "engines": {
     "node": ">= 4.0.0",

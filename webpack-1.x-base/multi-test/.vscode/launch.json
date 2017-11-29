@@ -5,17 +5,56 @@
   {
     "version": "0.2.0",
     "configurations": [
-      {
-        // 需要安装 vscode 的 Debugger for Chrome 插件才能使用Karma在chrome中调试
-        "type": "chrome",
-        "request": "attach",
-        "name": "Attach Karma Chrome",
-        "address": "localhost",
-        "port": 9333,
-        "pathMapping": {
-          "/": "${workspaceRoot}/",
-          "/base/": "${workspaceRoot}/"
+        // 启动karma服务器调试
+        {
+          "type": "node",
+          "request": "launch",
+          "name": "ServerDebugger",
+          // "program": "${workspaceRoot}/build/dev-server.js",
+          "program": "${workspaceRoot}/node_modules/karma/bin/karma",
+          "args": [
+            "start",
+            "${workspaceRoot}/test/unit/karma.unit.config.js"
+          ],
+          "stopOnEntry": true,
+          "cwd": "${workspaceRoot}",
+          "runtimeArgs": [
+              "--nolazy"
+          ],
+          "env": {
+              "NODE_ENV": "development"
+          }
         }
-      }
+        // 启动Karma服务器
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Server",
+        //     "program": "${workspaceFolder}/node_modules/karma/bin/karma",
+        //     "args": [
+        //       "start",
+        //       "test/unit/karma.browser.config.js"
+        //     ],
+        //     "cwd": "${workspaceFolder}"
+        // }
+        // {
+        //   // 需要安装 vscode 的 Debugger for Chrome 插件才能使用Karma在chrome中调试
+        //   "type": "chrome",
+        //   "request": "attach",
+        //   "name": "Attach Karma Chrome",
+        //   "address": "localhost",
+        //   "port": 9333,
+        //   "sourceMaps": true,
+        //   "webRoot": "${workspaceRoot}",
+        //   "sourceMapPathOverrides": {
+        //       "webpack:///*": "${webRoot}/src/*"
+        //   }
+        // }
     ]
-  }
+    // "compounds": [
+    //     {
+    //         "name": "Server/Client",
+    //         "configurations": ["Server", "Client"]
+    //     }
+    // ]
+}
