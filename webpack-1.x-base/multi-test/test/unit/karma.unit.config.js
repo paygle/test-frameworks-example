@@ -12,18 +12,19 @@ module.exports = function (config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      'Chrome'
+      'PhantomJS'
     ],
 
-    reporters: ['mocha'],
+    reporters: ['spec', 'coverage'],
 
     plugins: base.plugins.concat([
-      'karma-chrome-launcher'
+      'karma-phantomjs-launcher',
+      'karma-spec-reporter'
     ]),
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: true,
+    singleRun: false,
     
     colors: true,
 

@@ -25,6 +25,7 @@ module.exports = function (config) {
     reporters: ['mocha'],
 
     plugins: base.plugins.concat([
+      'karma-mocha-reporter',
       'karma-chrome-launcher'
     ]),
 
