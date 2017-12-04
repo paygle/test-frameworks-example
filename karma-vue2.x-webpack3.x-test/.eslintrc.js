@@ -3,18 +3,23 @@
 module.exports = {
   root: true,
   parser: 'babel-eslint',
-  parserOptions: {
-    sourceType: 'module'
-  },
   env: {
     browser: true,
   },
   // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-  extends: 'standard',
+  extends: 'elemefe',
   // required to lint *.vue files
   plugins: [
-    'html'
+    'html',
+    'vue',
+    'json'
   ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
+  },
   // add your custom rules here
   'rules': {
     // allow paren-less arrow functions
