@@ -1,5 +1,10 @@
 import Vue from 'vue';
+import { Button, Select, Option } from 'element-ui';
 import HelloWorld from '@/packages/HelloWorld';
+
+Vue.use(Button);
+Vue.use(Select);
+Vue.use(Option);
 
 describe('HelloWorld.vue', () => {
   it('should render correct contents', () => {

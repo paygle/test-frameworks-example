@@ -10,7 +10,7 @@
       <br>
       <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
     </ul>
-    <h2>Ecosystem</h2>
+    <h2>Ecosystem Hello</h2>
     <ul>
       <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
       <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
@@ -20,7 +20,7 @@
     <el-select v-model="sel">
       <el-option value="hhh">hhhHHHH</el-option>
       <el-option value="AAA">AAAAAAA</el-option>
-      <el-option value="BBB">BBBBBBBB</el-option>
+      <el-option value="BBB">BBBBBBBBRR</el-option>
     </el-select>
   </div>
 </template>

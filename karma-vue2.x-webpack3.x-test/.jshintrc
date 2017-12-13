@@ -1,0 +1,14 @@
+{
+  "esversion":6,
+  "funcscope":true,
+  "latedef":true,
+  "nonbsp":true,
+  "undef":true,
+  "unused":"strict",
+  "debug":false,
+  "loopfunc":true,
+  "browser":true,
+  "node":true,
+  "mocha":true,
+  "jasmine": true
+}
