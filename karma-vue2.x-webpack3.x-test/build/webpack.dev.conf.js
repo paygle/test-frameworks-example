@@ -7,6 +7,17 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+const getEntrys = require('../config/entrys')
+
+let files = getEntrys('src/pages');
+let entrys = baseWebpackConfig.entry;
+
+//严重警告： 入口文件名称是全局作用域，千万不要同名否则会被覆盖
+Object.keys(files).forEach((item)=>{
+  entrys[item] = files[item].js;
+});
+
+debugger
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {

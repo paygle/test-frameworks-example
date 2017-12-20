@@ -2,9 +2,20 @@
 
 module.exports = {
   root: true,
+  globals: {
+    '$': true,
+    'jQuery': true,
+    'Vue': true,
+    'Vuex': true,
+    'VueRouter': true,
+    'ELEMENT': true,
+    'echarts': true,
+    'XLSX': true,
+    'pako': true
+  },
   parser: 'babel-eslint',
   env: {
-    browser: true,
+    browser: true
   },
   // https://github.com/standard/standard/blob/master/docs/RULES-en.md
   extends: 'elemefe',
@@ -22,6 +33,7 @@ module.exports = {
   },
   // add your custom rules here
   'rules': {
+    "no-undef": 1,
     // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await

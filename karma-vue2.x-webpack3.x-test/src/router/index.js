@@ -1,10 +1,9 @@
-import Vue from 'vue';
-import Router from 'vue-router';
 import HelloWorld from '@/HelloWorld';
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
-export default new Router({
+console.log('VueRouter', VueRouter);
+export default new VueRouter({
   routes: [
     {
       path: '/',
