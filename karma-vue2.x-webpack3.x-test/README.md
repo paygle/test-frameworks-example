@@ -1,30 +1,33 @@
-# karma-test
+# karma-test 使用说明
 
 > karma test vue2 in webpack3.x
 
-## Build Setup
+## 不需要引入可直接使用的（第三库）全局变量
+$或jQuery、Vue、Vuex、VueRouter、ELEMENT、echarts、XLSX、pako
+## 构建与安装
 
 ``` bash
-# install dependencies
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 运行开发环境 localhost:8080
 npm run dev
 
-# build for production with minification
+# 构建发布文件
 npm run build
 
-# build for production and view the bundle analyzer report
+# 运行已经构建目录中打包完成将发布的文件
+npm run product
+
+# 构建发布文件及打包分析报告分析
 npm run build --report
 
-# run unit tests
+# 运行单元测试
 npm run unit
 
-# run e2e tests
+# 运行浏览器端到端测试
 npm run e2e
 
-# run all tests
+# 运行所有测试
 npm test
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

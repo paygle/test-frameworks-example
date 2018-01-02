@@ -3,14 +3,44 @@ const utils = require('./utils')
 const config = require('../config')
 const webpack = require('webpack')
 const WebpackMd5Hash = require('webpack-md5-hash')
-const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 const vueLoaderConfig = require('./vue-loader.conf')
+const scripts = process.env.NODE_ENV === 'production' ?
+[
+  'static/css/element.css',
+  'static/css/ztree/default/zTreeStyle.css',
+  'static/js/jq/jquery.min.js',
+  'static/js/jq/jquery.ztree.all.min.js',
+  'static/js/jq/jquery.ztree.exhide.min.js',
+  'static/js/vue/vue.min.js',
+  'static/js/vue/vuex.min.js',
+  'static/js/vue/vue-router.min.js',
+  'static/js/vue/element.js',
+  'static/js/echarts/echarts.min.js',
+  'static/js/echarts/echarts-amap.min.js',
+  'static/js/xlsx/xlsx.min.js',
+  'static/js/pako/pako.min.js'
+]:[
+  'static/css/element.css',
+  'static/css/ztree/default/zTreeStyle.css',
+  'static/js/jq/jquery.js',
+  'static/js/jq/jquery.ztree.all.js',
+  'static/js/jq/jquery.ztree.exhide.js',
+  'static/js/vue/vue.js',
+  'static/js/vue/vuex.js',
+  'static/js/vue/vue-router.js',
+  'static/js/vue/element.js',
+  'static/js/echarts/echarts.js',
+  'static/js/echarts/echarts-amap.min.js',
+  'static/js/xlsx/xlsx.js',
+  'static/js/pako/pako.js'
+];
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-module.exports = {
+var baseConfig = {
   context: path.resolve(__dirname, '../'),
   entry: {},
   output: {
@@ -25,7 +55,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src/packages'),
+      '@': resolve('src/components'),
       'src': resolve('src'),
       'pages': resolve('src/pages')
     }
@@ -78,6 +108,7 @@ module.exports = {
       }
     ]
   },
+  // 外部引入文件
   externals: {
     'jquery': 'jQuery',
     'vue': 'Vue',
@@ -93,46 +124,17 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      'echarts': 'echarts',
+      'Vue': 'vue',
       'Vuex': 'vuex',
       'VueRouter': 'vue-router',
+      'ELEMENT': 'element-ui',
+      'echarts': 'echarts',
       'XLSX': 'xlsx',
       'pako': 'pako'
     }),
-    // new webpack.DllReferencePlugin({
-    //   context:  path.join(__dirname, "../static/js"),
-    //   manifest: require("../static/dllVue.manifest.json")
-    // }),
-    // new webpack.DllReferencePlugin({
-    //   context:  path.join(__dirname, "../static/js"),
-    //   manifest: require("../static/dllVuex.manifest.json")
-    // }),
-    // new webpack.DllReferencePlugin({
-    //   context:  path.join(__dirname, "../static/js"),
-    //   manifest: require("../static/dllVueRouter.manifest.json")
-    // }),
-    // new webpack.DllReferencePlugin({
-    //   context:  path.join(__dirname, "../static/js"),
-    //   manifest: require("../static/dllElement.manifest.json")
-    // }),
     // 追加第三方库文件
-    new HtmlWebpackIncludeAssetsPlugin({
-      assets: [
-        'static/css/element.css',
-        'static/css/ztree/default/zTreeStyle.css',
-        'static/js/jq/jquery.min.js',
-        'static/js/jq/jquery.ztree.all.min.js',
-        'static/js/jq/jquery.ztree.exhide.min.js',
-        'static/js/vue/vue.js',
-        'static/js/vue/vuex.js',
-        'static/js/vue/vue-router.js',
-        'static/js/vue/element.js',
-        'static/js/echarts/echarts.js',
-        'static/js/echarts/echarts-amap.min.js',
-        'static/js/xlsx/xlsx.min.js',
-        'static/js/pako/pako.min.js'
-      ],
-      append: false
-    })
+    new HtmlWebpackIncludeAssetsPlugin({ assets: scripts, append: false })
   ]
 }
+
+module.exports = baseConfig;
