@@ -1,4 +1,5 @@
 'use strict'
+const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -8,16 +9,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const getEntrys = require('../config/entrys')
+const isTest = process.env.NODE_ENV === 'testing'
 
+//严重警告： 入口文件名称是全局作用域，千万不要同名否则会被覆盖
 let files = getEntrys('src/pages');
-let entrys = baseWebpackConfig.entry;
+if(!baseWebpackConfig.plugins){ baseWebpackConfig.plugins = []; }
 
-//严重警告： 所有入口文件名称都属于全局作用域，千万不要同名否则会被覆盖
 Object.keys(files).forEach((item)=>{
-  entrys[item] = files[item].js;
+  baseWebpackConfig.entry[item] = files[item].js;
+  baseWebpackConfig.plugins.push(new HtmlWebpackPlugin({
+    filename: isTest ? 'index.html' : item + '.html',
+    template: isTest ? 'index.html' : files[item].tpl,
+    chunks:['vendor', 'manifest', item],   //介入JS
+    inject: true,
+    // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+    chunksSortMode: 'dependency'
+  }));
 });
-
-debugger
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -54,11 +62,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true
-    }),
+    // new HtmlWebpackPlugin({
+    //   filename: 'index.html',
+    //   template: 'index.html',
+    //   inject: true
+    // }),
   ]
 })
 

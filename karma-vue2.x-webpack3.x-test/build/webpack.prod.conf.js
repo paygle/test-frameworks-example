@@ -10,9 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const getEntrys = require('../config/entrys')
-const env = process.env.NODE_ENV === 'testing'
-  ? require('../config/test.env')
-  : require('../config/prod.env')
+const isTest = process.env.NODE_ENV === 'testing'
+const env = isTest ? require('../config/test.env') : require('../config/prod.env')
 
 //严重警告： 入口文件名称是全局作用域，千万不要同名否则会被覆盖
 let files = getEntrys('src/pages');
@@ -22,10 +21,8 @@ Object.keys(files).forEach((item)=>{
   baseWebpackConfig.entry[item] = files[item].js;
   // baseWebpackConfig.entry['common' + item] = [item];
   baseWebpackConfig.plugins.push(new HtmlWebpackPlugin({
-    filename: process.env.NODE_ENV === 'testing'
-      ? 'index.html'
-      : path.resolve(__dirname, '../dist/' + item + '.html'),
-    template: files[item].tpl,
+    filename: isTest ? 'index.html' : path.resolve(__dirname, '../dist/' + item + '.html'),
+    template: isTest ? 'index.html' :  files[item].tpl,
     chunks:['vendor', 'manifest', item],   //介入JS
     inject: true,
     minify: {

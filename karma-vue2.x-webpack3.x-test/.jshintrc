@@ -11,5 +11,17 @@
   "browser":true,
   "node":true,
   "mocha":true,
-  "jasmine": true
+  "jasmine": true,
+  "-W032": false,
+  "globals": {
+    "$": true,
+    "jQuery": true,
+    "Vue": true,
+    "Vuex": true,
+    "VueRouter": true,
+    "ELEMENT": true,
+    "echarts": true,
+    "XLSX": true,
+    "pako": true
+  }
 }
