@@ -108,8 +108,12 @@ var baseConfig = {
       }
     ]
   },
+  plugins: [ new WebpackMd5Hash()]
+};
+
+if  (process.env.NODE_ENV !== 'testing') {
   // 外部引入文件
-  externals: {
+  baseConfig.externals = {
     'jquery': 'jQuery',
     'vue': 'Vue',
     'vuex': 'Vuex',
@@ -118,23 +122,20 @@ var baseConfig = {
     'echarts': 'echarts',
     'xlsx': 'XLSX',
     'pako': 'pako'
-  },
-  plugins: [
-    new WebpackMd5Hash(),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'Vue': 'vue',
-      'Vuex': 'vuex',
-      'VueRouter': 'vue-router',
-      'ELEMENT': 'element-ui',
-      'echarts': 'echarts',
-      'XLSX': 'xlsx',
-      'pako': 'pako'
-    }),
-    // 追加第三方库文件
-    new HtmlWebpackIncludeAssetsPlugin({ assets: scripts, append: false })
-  ]
+  };
+  baseConfig.plugins.push(new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery',
+    'Vue': 'vue',
+    'Vuex': 'vuex',
+    'VueRouter': 'vue-router',
+    'ELEMENT': 'element-ui',
+    'echarts': 'echarts',
+    'XLSX': 'xlsx',
+    'pako': 'pako'
+  }),
+  // 追加第三方库文件
+  new HtmlWebpackIncludeAssetsPlugin({ assets: scripts, append: false }));
 }
 
 module.exports = baseConfig;

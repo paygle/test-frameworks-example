@@ -12,14 +12,14 @@ const getEntrys = require('../config/entrys')
 const isTest = process.env.NODE_ENV === 'testing'
 
 //严重警告： 入口文件名称是全局作用域，千万不要同名否则会被覆盖
-let files = getEntrys('src/pages');
+let files = isTest ? getEntrys('test/e2e/pages') : getEntrys('src/pages');
 if(!baseWebpackConfig.plugins){ baseWebpackConfig.plugins = []; }
 
 Object.keys(files).forEach((item)=>{
   baseWebpackConfig.entry[item] = files[item].js;
   baseWebpackConfig.plugins.push(new HtmlWebpackPlugin({
-    filename: isTest ? 'index.html' : item + '.html',
-    template: isTest ? 'index.html' : files[item].tpl,
+    filename: item + '.html',
+    template: files[item].tpl,
     chunks:['vendor', 'manifest', item],   //介入JS
     inject: true,
     // necessary to consistently work with multiple chunks via CommonsChunkPlugin
