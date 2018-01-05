@@ -22,9 +22,14 @@ module.exports = {
       selenium_port: 4444,
       selenium_host: config.dev.host,
       silent: true,
+      screenshots: {
+        enable: false,
+        path: ''
+      },
       globals: {
         devServerURL: 'http://' + config.dev.host + ':' + (process.env.PORT || config.dev.port)
-      }
+      },
+      exclude: ''
     },
 
     chrome: {

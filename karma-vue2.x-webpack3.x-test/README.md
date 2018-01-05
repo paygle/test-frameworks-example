@@ -16,16 +16,19 @@ npm run dev
 # 构建发布文件
 npm run build
 
+# 将框架文件替换到 element-ui, 一般不需要使用，默认 npm run dev 会执行
+npm run dep
+
 # 运行已经构建目录中打包完成将发布的文件
 npm run product
 
 # 构建发布文件及打包分析报告分析
 npm run build --report
 
-# 运行单元测试
+# 运行单元测试，在test/e2e/specs目录下编写测试代码
 npm run unit
 
-# 运行浏览器端到端测试
+# 运行浏览器端到端测试，在test/unit/specs目录下编写测试代码
 npm run e2e
 
 # 运行所有测试

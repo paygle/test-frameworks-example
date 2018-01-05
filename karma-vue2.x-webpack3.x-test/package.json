@@ -6,13 +6,14 @@
   "private": true,
   "scripts": {
     "start": "npm run dev",
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "npm run dep && webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "build": "node build/build.js",
     "product": "node build/product.js",
+    "dep": "node build/update-element.js",
     "build:dll": "webpack -p --progress --config build/webpack.dll.conf.js"
   },
   "dependencies": {
@@ -23,6 +24,10 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
+    "@types/chai": "^4.0.10",
+    "@types/jquery": "^3.2.17",
+    "@types/nightwatch": "^0.9.5",
+    "@types/vue": "^2.0.0",
     "autoprefixer": "^7.2.3",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
@@ -38,8 +43,9 @@
     "chalk": "^2.3.0",
     "chromedriver": "^2.33.2",
     "compression-webpack-plugin": "^1.1.2",
+    "copy": "^0.3.1",
     "copy-webpack-plugin": "^4.3.0",
-    "cross-env": "^5.1.1",
+    "cross-env": "^5.1.3",
     "cross-spawn": "^5.1.0",
     "css-loader": "^0.28.7",
     "echarts": "^3.8.5",
@@ -65,7 +71,7 @@
     "html-webpack-include-assets-plugin": "^1.0.2",
     "html-webpack-plugin": "^2.30.1",
     "inject-loader": "^3.0.1",
-    "jquery": "^3.2.1",
+    "jquery": "^2.2.4",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.1",

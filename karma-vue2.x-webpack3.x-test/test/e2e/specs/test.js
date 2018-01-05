@@ -6,10 +6,13 @@ module.exports = {
     // automatically uses dev Server port from /config.index.js
     // see nightwatch.conf.js
     const devServer = browser.globals.devServerURL;
-
     browser
       .url(devServer)
-      .waitForElementVisible('#app', 5000)
+      .waitForElementVisible('#app', 50000)
+      .assert.elementPresent('.hello')
+      .assert.containsText('h1', 'Welcome to Your Vue.js App')
+      .assert.elementCount('img', 1)
+      .url(devServer + '/example.html')
       .assert.elementPresent('.hello')
       .assert.containsText('h1', 'Welcome to Your Vue.js App')
       .assert.elementCount('img', 1)
